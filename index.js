@@ -23,6 +23,7 @@ const typeDefs = gql`
         ola: String
         usuarioLogado: Usuario
         produtoEmDestaque: Produto
+        numerosMegaSena: [Int!]!
     }
 
     type Query {
@@ -68,6 +69,13 @@ const resolvers = {
                 preco: 4890.89,
                 desconto: 0.15,
             }
+        },
+
+        numerosMegaSena(){
+            const crescente = (a, b) => a - b;
+            return Array(6).fill(0)
+            .map(n => parseInt(Math.random() * 60 + 1))
+            .sort(crescente);
         }
 
 
